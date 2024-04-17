@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct EmojiDetail: View {
+    var emoji: Emoji
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            ScrollView(showsIndicators: false) {
+                HeaderView(emoji: emoji)
+                
+                HStack {
+                    VStack(alignment: .leading, spacing: 24) {
+                        Text("Emoji name:\(emoji.name)")
+                            .font(.largeTitle)
+                            .fontWeight(.heavy)
+                        
+                        Text(emoji.description)
+                    }
+                    Spacer()
+                }
+                .padding()
+            }
+            .navigationTitle(emoji.name)
+            .navigationBarTitleDisplayMode(.inline)
+            .ignoresSafeArea()
+        }
     }
 }
 
 #Preview {
-    EmojiDetail()
+    EmojiDetail(emoji: EmojiProvider.allEmojis().first!)
 }
