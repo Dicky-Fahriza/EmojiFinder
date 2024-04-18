@@ -9,7 +9,24 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            ContentView()
+                .tabItem {
+                    Label("Emoji", systemImage: "ev.plug.dc.nacs")
+                }
+            
+            Text("Map View")
+                .tabItem {
+                    Label("Locatian", systemImage: "binoculars")
+                }
+                .badge(4)
+            
+            Text("Setting Page")
+                .tabItem {
+                    Label("Settings", systemImage: "gear")
+                }
+        }
+        .tint(.primary)
     }
 }
 
